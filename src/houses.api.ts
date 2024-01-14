@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { houseRepository } from "./dals/house/index.js";
+import { houseRepository } from "#dals/house/index.js";
 
 export const housesApi = Router();
 

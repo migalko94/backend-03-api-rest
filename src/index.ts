@@ -1,5 +1,5 @@
-import "./core/load-env.js";
-import { createRestApiServer } from "./core/servers/index.js";
+import "#/core/load-env.js";
+import { createRestApiServer } from "#core/servers/index.js";
 import { housesApi } from "./houses.api.js";
 import { envConstants } from "./core/constants/index.js";
 
