@@ -1,6 +1,9 @@
 import { Router } from "express";
 import { houseRepository } from "#dals/house/index.js";
-import { mapHouseListFromModelToApi } from "./house.mappers.js";
+import {
+  mapHouseFromModelToApi,
+  mapHouseListFromModelToApi,
+} from "./house.mappers.js";
 
 export const housesApi = Router();
 
@@ -15,7 +18,7 @@ housesApi
       let houseList = await houseRepository.getHouseList();
 
       if (country) {
-        houseList = houseList.filter((h) => h.country === country);
+        houseList = houseList.filter((h) => h.address.country === country);
       }
       if (page && pageSize) {
         const startIndex = (page - 1) * pageSize;
@@ -30,7 +33,7 @@ housesApi
   .get("/:id", async (req, res) => {
     const { id } = req.params;
     const house = await houseRepository.getHouseDetail(id);
-    res.send(house);
+    res.send(mapHouseFromModelToApi(house));
   })
   .post("/:id/reviews", async (req, res) => {
     const { id } = req.params;
