@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { houseRepository } from "#dals/house/index.js";
+import { mapHouseListFromModelToApi } from "./house.mappers.js";
 
 export const housesApi = Router();
 
@@ -21,7 +22,7 @@ housesApi
         const endIndex = Math.min(startIndex + pageSize, houseList.length);
         houseList = houseList.slice(startIndex, endIndex);
       }
-      res.send(houseList);
+      res.send(mapHouseListFromModelToApi(houseList));
     } catch (error) {
       next(error);
     }

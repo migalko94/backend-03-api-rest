@@ -1,16 +1,14 @@
-import "#/core/load-env.js";
+import "#core/load-env.js";
+import express from "express";
 import { createRestApiServer } from "#core/servers/index.js";
-import { housesApi } from "./houses.api.js";
-import { envConstants } from "./core/constants/index.js";
+import { envConstants } from "#core/constants/index.js";
+import { housesApi } from "#pods/house/index.js";
 
 const restApiServer = createRestApiServer();
-restApiServer.use(async (error, req, res, next) => {
-  console.error(error);
-  res.sendStatus(500);
-});
 
-restApiServer.get("/", async (req, res) => {
-  res.send("My airbnb portal");
+restApiServer.use(async (req, res, next) => {
+  console.log(req.url);
+  next();
 });
 
 restApiServer.use("/api/houses", housesApi);
