@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getHouseDetail, getHouseList, insertReview } from "./mock.db.js";
+import { houseRepository } from "./dals/house/index.js";
 
 export const housesApi = Router();
 
@@ -11,7 +11,7 @@ housesApi
 
       let country = req.query.country;
 
-      let houseList = await getHouseList();
+      let houseList = await houseRepository.getHouseList();
 
       if (country) {
         houseList = houseList.filter((h) => h.country === country);
@@ -28,14 +28,12 @@ housesApi
   })
   .get("/:id", async (req, res) => {
     const { id } = req.params;
-    const houseId = Number(id);
-    const house = await getHouseDetail(houseId);
+    const house = await houseRepository.getHouseDetail(id);
     res.send(house);
   })
   .post("/:id/reviews", async (req, res) => {
     const { id } = req.params;
-    const newReviewId = Number(id);
     const review = req.body;
-    const newReview = await insertReview(newReviewId, review);
+    const newReview = await houseRepository.insertReview(id, review);
     res.status(201).send(newReview);
   });

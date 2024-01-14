@@ -1,24 +1,25 @@
-import express from "express";
+import "./core/load-env.js";
+import { createRestApiServer } from "./core/servers/index.js";
 import { housesApi } from "./houses.api.js";
+import { envConstants } from "./core/constants/index.js";
 
-const app = express();
-app.use(express.json());
-app.use(async (error, req, res, next) => {
+const restApiServer = createRestApiServer();
+restApiServer.use(async (error, req, res, next) => {
   console.error(error);
   res.sendStatus(500);
 });
 
-app.get("/", async (req, res) => {
+restApiServer.get("/", async (req, res) => {
   res.send("My airbnb portal");
 });
 
-app.use("/api/houses", housesApi);
+restApiServer.use("/api/houses", housesApi);
 
-app.use(async (error, req, res, next) => {
+restApiServer.use(async (error, req, res, next) => {
   console.error(error);
   res.sendStatus(500);
 });
 
-app.listen(3000, () => {
-  console.log("Server ready at port 3000");
+restApiServer.listen(envConstants.PORT, () => {
+  console.log(`Server ready at port ${envConstants.PORT}`);
 });
