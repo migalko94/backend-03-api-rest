@@ -172,9 +172,7 @@ export const db: DB = {
       reviews: [
         {
           _id: "1",
-          date: {
-            $date: new Date("2022-12-19T05:00:00Z"),
-          },
+          date: new Date("2016-12-19T05:00:00Z"),
           listing_id: "10059872",
           reviewer_id: "5302612",
           reviewer_name: "Octavio",
@@ -183,9 +181,8 @@ export const db: DB = {
         },
         {
           _id: "2",
-          date: {
-            $date: new Date("2020-01-01T05:00:00Z"),
-          },
+          date: new Date("2017-01-01T05:00:00Z"),
+
           listing_id: "10059872",
           reviewer_id: "48436743",
           reviewer_name: "Ross",
@@ -194,9 +191,8 @@ export const db: DB = {
         },
         {
           _id: "3",
-          date: {
-            $date: new Date("2016-01-03T05:00:00Z"),
-          },
+          date: new Date("2018-01-03T05:00:00Z"),
+
           listing_id: "10006546",
           reviewer_id: "51483096",
           reviewer_name: "Cátia",
@@ -205,9 +201,8 @@ export const db: DB = {
         },
         {
           _id: "4",
-          date: {
-            $date: new Date("2015-02-14T05:00:00Z"),
-          },
+          date: new Date("2019-02-14T05:00:00Z"),
+
           listing_id: "10006546",
           reviewer_id: "40031996",
           reviewer_name: "Théo",
@@ -216,9 +211,8 @@ export const db: DB = {
         },
         {
           _id: "5",
-          date: {
-            $date: new Date("2012-02-14T05:00:00Z"),
-          },
+          date: new Date("2020-02-14T05:00:00Z"),
+
           listing_id: "10006546",
           reviewer_id: "40031996",
           reviewer_name: "Théo",
@@ -360,9 +354,7 @@ export const db: DB = {
       reviews: [
         {
           _id: "1",
-          date: {
-            $date: new Date("2019-12-19T05:00:00Z"),
-          },
+          date: new Date("2011-12-19T05:00:00Z"),
           listing_id: "10059872",
           reviewer_id: "5302612",
           reviewer_name: "Octavio",
@@ -371,9 +363,7 @@ export const db: DB = {
         },
         {
           _id: "2",
-          date: {
-            $date: new Date("2018-01-01T05:00:00Z"),
-          },
+          date: new Date("2012-01-01T05:00:00Z"),
           listing_id: "10059872",
           reviewer_id: "48436743",
           reviewer_name: "Ross",
@@ -382,9 +372,7 @@ export const db: DB = {
         },
         {
           _id: "3",
-          date: {
-            $date: new Date("2017-03-27T04:00:00Z"),
-          },
+          date: new Date("2013-03-27T04:00:00Z"),
           listing_id: "10059872",
           reviewer_id: "111288273",
           reviewer_name: "Christian",
@@ -393,9 +381,8 @@ export const db: DB = {
         },
         {
           _id: "4",
-          date: {
-            $date: new Date("2016-01-03T05:00:00Z"),
-          },
+          date: new Date("2014-01-03T05:00:00Z"),
+
           listing_id: "10057826",
           reviewer_id: "22162519",
           reviewer_name: "Alex",
@@ -404,9 +391,7 @@ export const db: DB = {
         },
         {
           _id: "5",
-          date: {
-            $date: new Date("2013-07-24T04:00:00Z"),
-          },
+          date: new Date("2015-07-24T04:00:00Z"),
           listing_id: "10057826",
           reviewer_id: "20282871",
           reviewer_name: "Dina",

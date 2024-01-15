@@ -1,12 +1,10 @@
 export interface Review {
   _id: string;
-  date: {
-    $date: Date;
-  };
-  listing_id: string;
-  reviewer_id: string;
-  reviewer_name: string;
+  date: Date;
   comments: string;
+  listing_id?: string;
+  reviewer_id?: string;
+  reviewer_name?: string;
 }
 
 export interface House {

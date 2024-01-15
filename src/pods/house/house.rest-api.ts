@@ -3,6 +3,8 @@ import { houseRepository } from "#dals/house/index.js";
 import {
   mapHouseFromModelToApi,
   mapHouseListFromModelToApi,
+  mapReviewFromApiToModel,
+  mapReviewFromModelToApi,
 } from "./house.mappers.js";
 
 export const housesApi = Router();
@@ -30,14 +32,22 @@ housesApi
       next(error);
     }
   })
-  .get("/:id", async (req, res) => {
-    const { id } = req.params;
-    const house = await houseRepository.getHouseDetail(id);
-    res.send(mapHouseFromModelToApi(house));
+  .get("/:id", async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const house = await houseRepository.getHouseDetail(id);
+      res.send(mapHouseFromModelToApi(house));
+    } catch (error) {
+      next(error);
+    }
   })
-  .post("/:id/reviews", async (req, res) => {
-    const { id } = req.params;
-    const review = req.body;
-    const newReview = await houseRepository.insertReview(id, review);
-    res.status(201).send(newReview);
+  .post("/:id/reviews", async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const review = mapReviewFromApiToModel(req.body);
+      const newReview = await houseRepository.insertReview(id, review);
+      res.status(201).send(mapReviewFromModelToApi(newReview));
+    } catch (error) {
+      next(error);
+    }
   });

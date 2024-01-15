@@ -1,10 +1,10 @@
 export interface Review {
-  reviewId: string;
+  _id: string;
   date: Date;
-  reviewer_name: string;
-  listing_id: string;
-  reviewerId: string;
   comments: string;
+  listing_id?: string;
+  reviewer_id?: string;
+  reviewer_name?: string;
 }
 
 export interface House {

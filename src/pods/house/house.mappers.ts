@@ -1,21 +1,25 @@
 import * as model from "#dals/index.js";
 import * as apiModel from "./house.api-model.js";
 
-const getLastFiveReviews = (reviewList: apiModel.Review[]): apiModel.Review[] =>
-  reviewList.slice(0, 5);
+const getLastReviews = (
+  reviewList: apiModel.Review[],
+  itemsToShow: number
+): apiModel.Review[] =>
+  reviewList.slice(reviewList.length - itemsToShow, reviewList.length);
 
-const mapReviewFromModelToApi = (review: model.Review): apiModel.Review => ({
-  reviewId: review._id,
-  date: review.date.$date,
+export const mapReviewFromModelToApi = (
+  review: model.Review
+): apiModel.Review => ({
+  _id: review._id,
+  date: review.date,
   reviewer_name: review.reviewer_name,
-  reviewerId: review.reviewer_id,
-  listing_id: review.listing_id,
   comments: review.comments,
 });
 
 const mapReviewListFromModelToApi = (
   reviewList: model.Review[]
-): apiModel.Review[] => reviewList.map(mapReviewFromModelToApi);
+): apiModel.Review[] =>
+  getLastReviews(reviewList.map(mapReviewFromModelToApi), 5);
 
 export const mapHouseFromModelToApi = (house: model.House): apiModel.House => ({
   id: house._id,
@@ -32,3 +36,12 @@ export const mapHouseFromModelToApi = (house: model.House): apiModel.House => ({
 export const mapHouseListFromModelToApi = (
   houseList: model.House[]
 ): apiModel.House[] => houseList.map(mapHouseFromModelToApi);
+
+export const mapReviewFromApiToModel = (
+  review: apiModel.Review
+): model.Review => ({
+  _id: review._id,
+  date: review.date,
+  reviewer_name: review.reviewer_name,
+  comments: review.comments,
+});

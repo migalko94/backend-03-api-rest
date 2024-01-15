@@ -11,21 +11,17 @@ export const mockRepository: HouseRepository = {
     let modifiedHouse = db.houses.find((h) => h._id === houseId);
     if (modifiedHouse) {
       let { reviews } = modifiedHouse;
-      const reviewId = reviews.length + 1;
+      const _id = (reviews.length + 1).toString();
       const date = new Date();
       const newReview: Review = {
-        _id: reviewId.toString(),
-        date: {
-          $date: date,
-        },
-        reviewer_id: review.reviewer_id,
-        listing_id: review.listing_id,
-        reviewer_name: review.reviewer_name,
+        _id,
+        date,
         comments: review.comments,
+        reviewer_name: review.reviewer_name,
       };
       modifiedHouse = {
         ...modifiedHouse,
-        reviews: [newReview, ...reviews],
+        reviews: [...reviews, newReview],
       };
       db.houses = [modifiedHouse, ...db.houses];
       return newReview;
