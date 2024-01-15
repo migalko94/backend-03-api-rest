@@ -14,19 +14,13 @@ housesApi
     try {
       const page = Number(req.query.page);
       const pageSize = Number(req.query.pageSize);
+      const country = req.query.country as string;
 
-      let country = req.query.country;
-
-      let houseList = await houseRepository.getHouseList();
-
-      if (country) {
-        houseList = houseList.filter((h) => h.address.country === country);
-      }
-      if (page && pageSize) {
-        const startIndex = (page - 1) * pageSize;
-        const endIndex = Math.min(startIndex + pageSize, houseList.length);
-        houseList = houseList.slice(startIndex, endIndex);
-      }
+      const houseList = await houseRepository.getHouseList(
+        page,
+        pageSize,
+        country
+      );
       res.send(mapHouseListFromModelToApi(houseList));
     } catch (error) {
       next(error);
