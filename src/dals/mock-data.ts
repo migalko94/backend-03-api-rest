@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { House } from "./house/index.js";
 
 export interface DB {
@@ -7,7 +8,7 @@ export interface DB {
 export const db: DB = {
   houses: [
     {
-      _id: "1",
+      _id: new ObjectId(),
       listing_url: "https://www.airbnb.com/rooms/10006546",
       name: "Ribeira Charming Duplex",
       summary:
@@ -171,7 +172,7 @@ export const db: DB = {
       },
       reviews: [
         {
-          _id: "1",
+          _id: new ObjectId(),
           date: new Date("2016-12-19T05:00:00Z"),
           listing_id: "10059872",
           reviewer_id: "5302612",
@@ -180,7 +181,7 @@ export const db: DB = {
             "The host canceled this reservation 11 days before arrival. This is an automated posting.",
         },
         {
-          _id: "2",
+          _id: new ObjectId(),
           date: new Date("2017-01-01T05:00:00Z"),
 
           listing_id: "10059872",
@@ -190,7 +191,7 @@ export const db: DB = {
             "Giovanni was very helpful and responsive to my questions. This is a great apartment that is very convenient for exploring Hong Kong.",
         },
         {
-          _id: "3",
+          _id: new ObjectId(),
           date: new Date("2018-01-03T05:00:00Z"),
 
           listing_id: "10006546",
@@ -200,7 +201,7 @@ export const db: DB = {
             "A casa da Ana e do Gonçalo foram o local escolhido para a passagem de ano com um grupo de amigos. Fomos super bem recebidos com uma grande simpatia e predisposição a ajudar com qualquer coisa que fosse necessário.\r\nA casa era ainda melhor do que parecia nas fotos, totalmente equipada, com mantas, aquecedor e tudo o que pudessemos precisar.\r\nA localização não podia ser melhor! Não há melhor do que acordar de manhã e ao virar da esquina estar a ribeira do Porto.",
         },
         {
-          _id: "4",
+          _id: new ObjectId(),
           date: new Date("2019-02-14T05:00:00Z"),
 
           listing_id: "10006546",
@@ -210,7 +211,7 @@ export const db: DB = {
             "We are french's students, we traveled some days in Porto, this space was good and we can cooking easly. It was rainning so we eard every time the water fall to the ground in the street when we sleeping. But It was cool and or was well received by Ana et Gonçalo",
         },
         {
-          _id: "5",
+          _id: new ObjectId(),
           date: new Date("2020-02-14T05:00:00Z"),
 
           listing_id: "10006546",
@@ -222,7 +223,7 @@ export const db: DB = {
       ],
     },
     {
-      _id: "2",
+      _id: new ObjectId(),
       listing_url: "https://www.airbnb.com/rooms/10009999",
       name: "Horto flat with small garden",
       summary:
@@ -353,7 +354,7 @@ export const db: DB = {
       review_scores: null,
       reviews: [
         {
-          _id: "1",
+          _id: new ObjectId(),
           date: new Date("2011-12-19T05:00:00Z"),
           listing_id: "10059872",
           reviewer_id: "5302612",
@@ -362,7 +363,7 @@ export const db: DB = {
             "The host canceled this reservation 11 days before arrival. This is an automated posting.",
         },
         {
-          _id: "2",
+          _id: new ObjectId(),
           date: new Date("2012-01-01T05:00:00Z"),
           listing_id: "10059872",
           reviewer_id: "48436743",
@@ -371,7 +372,7 @@ export const db: DB = {
             "Giovanni was very helpful and responsive to my questions. This is a great apartment that is very convenient for exploring Hong Kong.",
         },
         {
-          _id: "3",
+          _id: new ObjectId(),
           date: new Date("2013-03-27T04:00:00Z"),
           listing_id: "10059872",
           reviewer_id: "111288273",
@@ -380,7 +381,7 @@ export const db: DB = {
             "The host canceled this reservation 8 days before arrival. This is an automated posting.",
         },
         {
-          _id: "4",
+          _id: new ObjectId(),
           date: new Date("2014-01-03T05:00:00Z"),
 
           listing_id: "10057826",
@@ -390,7 +391,7 @@ export const db: DB = {
             "I could not have found a better place to stay in Brooklyn. I have nothing but positive things to say about this place. Definitely recommend staying here and would stay again.",
         },
         {
-          _id: "5",
+          _id: new ObjectId(),
           date: new Date("2015-07-24T04:00:00Z"),
           listing_id: "10057826",
           reviewer_id: "20282871",

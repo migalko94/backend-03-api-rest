@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { HouseRepository } from "./house.repository.js";
 import { House, Review } from "../house.model.js";
 import { db } from "../../mock-data.js";
@@ -38,13 +39,13 @@ export const mockRepository: HouseRepository = {
       pageSize
     ),
   getHouseDetail: async (id: string): Promise<House> =>
-    db.houses.find((h) => h._id === id),
+    db.houses.find((h) => h._id.toHexString() === id),
 
-  insertReview: async (houseId: string, review) => {
-    let modifiedHouse = db.houses.find((h) => h._id === houseId);
+  insertReview: async (houseId: string, review: Review) => {
+    let modifiedHouse = db.houses.find((h) => h._id.toHexString() === houseId);
     if (modifiedHouse) {
       let { reviews } = modifiedHouse;
-      const _id = (reviews.length + 1).toString();
+      const _id = new ObjectId((reviews.length + 1).toString());
       const date = new Date();
       const newReview: Review = {
         _id,
