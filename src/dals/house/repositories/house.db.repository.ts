@@ -4,10 +4,19 @@ import { ObjectId } from "mongodb";
 import { getHouseContext } from "../house.context.js";
 
 export const dbRepository: HouseRepository = {
-  getHouseList: async (page?: number, pageSize?: number) => {
+  getHouseList: async (page?: number, pageSize?: number, country?: string) => {
     const skip = Boolean(page) ? (page - 1) * pageSize : 0;
     const limit = pageSize ?? 0;
-    return await getHouseContext().find().skip(skip).limit(limit).toArray();
+    const countryFilter = country
+      ? {
+          "address.country": `${country}`,
+        }
+      : {};
+    return await getHouseContext()
+      .find(countryFilter)
+      .skip(skip)
+      .limit(limit)
+      .toArray();
   },
   getHouseDetail: async (id: string) => {
     return await getHouseContext().findOne({
@@ -15,7 +24,6 @@ export const dbRepository: HouseRepository = {
     });
   },
   insertReview: async (houseId: string, review: Review) => {
-    console.log(review);
     const newReview = {
       _id: new ObjectId().toHexString(),
       date: new Date(),
