@@ -2,7 +2,7 @@ import * as model from "#dals/index.js";
 import * as apiModel from "./house.api-model.js";
 
 //Review
-const getLastReviews = (
+export const getLastReviews = (
   reviewList: apiModel.Review[],
   itemsToShow: number
 ): apiModel.Review[] =>
@@ -26,7 +26,7 @@ export const mapReviewFromApiToModel = (
   reviewer_name: review.reviewer_name,
 });
 
-const mapReviewListFromModelToApi = (
+export const mapReviewListFromModelToApi = (
   reviewList: model.Review[]
 ): apiModel.Review[] =>
   getLastReviews(reviewList.map(mapReviewFromModelToApi), 5);
