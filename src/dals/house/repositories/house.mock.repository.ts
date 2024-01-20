@@ -45,7 +45,7 @@ export const mockRepository: HouseRepository = {
     let modifiedHouse = db.houses.find((h) => h._id.toHexString() === houseId);
     if (modifiedHouse) {
       let { reviews } = modifiedHouse;
-      const _id = new ObjectId((reviews.length + 1).toString());
+      const _id = new ObjectId(reviews.length + 1);
       const date = new Date();
       const newReview: Review = {
         _id,
