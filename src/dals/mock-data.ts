@@ -1,11 +1,25 @@
 import { ObjectId } from "mongodb";
 import { House } from "./house/index.js";
+import { User } from "./user/index.js";
 
 export interface DB {
+  users: User[];
   houses: House[];
 }
 
 export const db: DB = {
+  users: [
+    {
+      _id: new ObjectId(),
+      email: "user@email.com",
+      password: "test",
+    },
+    {
+      _id: new ObjectId(),
+      email: "user2@email.com",
+      password: "test2",
+    },
+  ],
   houses: [
     {
       _id: "1",
