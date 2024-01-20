@@ -10,11 +10,12 @@ export interface Review {
 export interface House {
   id: string;
   name: string;
+  description?: string;
   image: string;
-  country: string;
-  address: string;
-  rooms: number;
-  beds: number;
-  bathrooms: string;
-  reviews: Review[];
+  country?: string;
+  address?: string;
+  rooms?: number;
+  beds?: number;
+  bathrooms?: string;
+  reviews?: Review[];
 }

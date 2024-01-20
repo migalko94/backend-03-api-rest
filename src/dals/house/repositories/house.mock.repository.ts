@@ -9,7 +9,6 @@ const paginateHouseList = (
   pageSize: number
 ): House[] => {
   let paginatedHouseList = [...houseList];
-
   if (page && pageSize) {
     const startIndex = (page - 1) * pageSize;
     const endIndex = Math.min(startIndex + pageSize, paginatedHouseList.length);
