@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "prestart": "sh ./create-dev-env.sh",
     "start": "run-p -l type-check:watch start:dev start:local-db",
     "start:dev": "nodemon --transpileOnly --esm src/index.ts",
     "start:local-db": "docker compose up -d",
