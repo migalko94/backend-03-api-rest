@@ -4,7 +4,7 @@ export interface Review {
   comments: string;
   listing_id?: string;
   reviewer_id?: string;
-  reviewer_name?: string;
+  reviewer_name: string;
 }
 
 export interface House {

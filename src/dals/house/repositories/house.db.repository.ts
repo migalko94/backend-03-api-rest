@@ -1,6 +1,5 @@
-import { db } from "#core/servers/index.js";
 import { HouseRepository } from "./house.repository.js";
-import { House, Review } from "../house.model.js";
+import { Review } from "../house.model.js";
 import { ObjectId } from "mongodb";
 import { getHouseContext } from "../house.context.js";
 
@@ -12,18 +11,23 @@ export const dbRepository: HouseRepository = {
   },
   getHouseDetail: async (id: string) => {
     return await getHouseContext().findOne({
-      _id: new ObjectId(id),
+      _id: id,
     });
   },
   insertReview: async (houseId: string, review: Review) => {
+    console.log(review);
+    const newReview = {
+      _id: new ObjectId().toHexString(),
+      date: new Date(),
+      reviewer_name: review.reviewer_name,
+      comments: review.comments,
+    };
     await getHouseContext().updateOne(
-      { _id: new ObjectId(houseId) },
+      { _id: houseId },
       {
-        $set: {
-          $push: { reviews: review },
-        },
+        $push: { reviews: newReview },
       }
     );
-    return review;
+    return newReview;
   },
 };

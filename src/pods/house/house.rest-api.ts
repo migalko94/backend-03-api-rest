@@ -38,8 +38,7 @@ housesApi
   .post("/:id/reviews", async (req, res, next) => {
     try {
       const { id } = req.params;
-      const review = mapReviewFromApiToModel(req.body);
-      const newReview = await houseRepository.insertReview(id, review);
+      const newReview = await houseRepository.insertReview(id, req.body);
       res.status(201).send(mapReviewFromModelToApi(newReview));
     } catch (error) {
       next(error);

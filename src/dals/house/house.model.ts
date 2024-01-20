@@ -1,16 +1,14 @@
-import { ObjectId } from "mongodb";
-
 export interface Review {
-  _id: ObjectId;
+  _id: string;
   date: Date;
   comments: string;
   listing_id?: string;
   reviewer_id?: string;
-  reviewer_name?: string;
+  reviewer_name: string;
 }
 
 export interface House {
-  _id: ObjectId;
+  _id: string;
   listing_url: string;
   name: string;
   summary: string;

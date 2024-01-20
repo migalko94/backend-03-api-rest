@@ -39,13 +39,13 @@ export const mockRepository: HouseRepository = {
       pageSize
     ),
   getHouseDetail: async (id: string): Promise<House> =>
-    db.houses.find((h) => h._id.toHexString() === id),
+    db.houses.find((h) => h._id === id),
 
   insertReview: async (houseId: string, review: Review) => {
-    let modifiedHouse = db.houses.find((h) => h._id.toHexString() === houseId);
+    let modifiedHouse = db.houses.find((h) => h._id === houseId);
     if (modifiedHouse) {
       let { reviews } = modifiedHouse;
-      const _id = new ObjectId(reviews.length + 1);
+      const _id = (reviews.length + 1).toString();
       const date = new Date();
       const newReview: Review = {
         _id,

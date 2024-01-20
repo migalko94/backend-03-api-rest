@@ -11,7 +11,7 @@ const getLastReviews = (
 export const mapReviewFromModelToApi = (
   review: model.Review
 ): apiModel.Review => ({
-  _id: review._id instanceof ObjectId ? review._id.toHexString() : review._id,
+  _id: review._id,
   date: review.date,
   reviewer_name: review.reviewer_name,
   comments: review.comments,
@@ -23,7 +23,7 @@ const mapReviewListFromModelToApi = (
   getLastReviews(reviewList.map(mapReviewFromModelToApi), 5);
 
 export const mapHouseFromModelToApi = (house: model.House): apiModel.House => ({
-  id: house._id instanceof ObjectId ? house._id.toHexString() : house._id,
+  id: house._id,
   name: house.name,
   image: house.images.picture_url,
   country: house.address.country,
@@ -41,8 +41,8 @@ export const mapHouseListFromModelToApi = (
 export const mapReviewFromApiToModel = (
   review: apiModel.Review
 ): model.Review => ({
-  _id: new ObjectId(review._id),
+  _id: review._id,
   date: review.date,
-  reviewer_name: review.reviewer_name,
   comments: review.comments,
+  reviewer_name: review.reviewer_name,
 });
