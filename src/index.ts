@@ -6,12 +6,14 @@ import {
 import { connectToDBServer, createRestApiServer } from "#core/servers/index.js";
 import { envConstants } from "#core/constants/index.js";
 import { housesApi } from "#pods/house/index.js";
+import { securityApi, authenticationMiddleware } from "#pods/security/index.js";
 
 const restApiServer = createRestApiServer();
 
 restApiServer.use(logRequestMiddleware);
 
-restApiServer.use("/api/houses", housesApi);
+restApiServer.use("/api/security", securityApi);
+restApiServer.use("/api/houses", authenticationMiddleware, housesApi);
 
 restApiServer.use(logErrorRequestMiddleware);
 

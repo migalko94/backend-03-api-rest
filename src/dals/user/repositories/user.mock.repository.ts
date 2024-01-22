@@ -1,3 +1,6 @@
 import { UserRepository } from "./user.repository.js";
-
-export const mockRepository: UserRepository = {};
+import { db } from "../../mock-data.js";
+export const mockRepository: UserRepository = {
+  getUserByEmailAndPassword: async (email: string, password: string) =>
+    db.users.find((u) => u.email === email && u.password === password),
+};
