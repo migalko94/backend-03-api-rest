@@ -13,11 +13,13 @@ export const db: DB = {
       _id: new ObjectId(),
       email: "user@email.com",
       password: "test",
+      salt: "",
     },
     {
       _id: new ObjectId(),
       email: "user2@email.com",
-      password: "test2",
+      password: "test",
+      salt: "",
     },
   ],
   houses: [
